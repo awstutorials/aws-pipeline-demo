@@ -24,11 +24,7 @@ phases:
     - echo Pushing docker image
     - docker push $IMAGE_URI
     - echo push completed
-    - printf '{"tag":"%s"}' $TAG > build.json
     - printf '[{"name":"LimitsContainer","imageUri":"%s"}]' $IMAGE_URI > imagedefinitions.json
-    - cat service-cf.yaml > service-def.yaml
 artifacts:
   files:
-  - service-def.yaml
-  - build.json
   - imagedefinitions.json
