@@ -20,6 +20,14 @@ public class LimitsConfigurationController {
 		return limitConfiguration;
 	}
 	
+	@GetMapping("/limitsnew")
+	public LimitConfiguration retrieveLimitsFromConfigurationsNew() {
+		LimitConfiguration limitConfiguration = new LimitConfiguration(configuration.getMaximum(), 
+				configuration.getMinimum());
+		return limitConfiguration;
+	}
+
+	
 	@GetMapping("/fault-tolerance-example")
 	@HystrixCommand(fallbackMethod="fallbackRetrieveConfiguration")
 	public LimitConfiguration retrieveConfiguration() {
